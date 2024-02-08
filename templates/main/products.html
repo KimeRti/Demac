@@ -1,0 +1,202 @@
+{% load static %}
+{% load i18n %}
+<!DOCTYPE html>
+<html lang="en">
+    <!DOCTYPE html>
+    <html lang="en">
+   
+    <head>
+        <meta charset="utf-8">
+        <title>{% trans 'Ürünlerimiz' %}</title>
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <meta content="" name="keywords">
+        <meta content="" name="description">
+   
+        <!-- Favicon -->
+        {% include 'main/partials/_libaries.html' %}
+        <style>
+            /* Seçili kategori için aktif durumun stilini belirt */
+            .list-group-item.active {
+                background-color: #ffffff;
+                color: #000000;
+                font-weight: bold;
+            }
+            
+            /* Alt kategoriler için farklı bir arka plan rengi ve imleç stilini belirt */
+            .list-group-item.sub-category {
+                background-color: #ffffff;
+                cursor: pointer;
+                transition: background-color 0.3s;
+            }
+            
+            /* Seçili alt kategori için stil değişikliği yap */
+            .list-group-item.sub-category.active,
+            .list-group-item.sub-category:hover {
+                background-color: #0058af;
+            }
+            
+            /* Tıklanan alt kategori için stil değişikliği yap */
+            .list-group-item.sub-category:active {
+                background-color: #0058af !important;
+            }                                         
+            
+            /* Menü stil tanımlamaları */
+            li.menu {
+                display: flex;
+                align-items: center;
+                padding: 10px;
+                border-bottom: 1px solid #e5e5e5;
+            }
+            
+            li.menu:last-child {
+                border-bottom: none;
+            }
+            
+            li.menu .category-icon {
+                margin-right: 10px;
+            }
+            
+        </style>
+       
+       
+       
+       
+       
+       
+       
+       
+    </head>
+<body>
+
+    {% include 'main/partials/_topbar.html' %}
+
+    <!-- Spinner Start -->
+    <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <div class="spinner-border text-primary" role="status" style="width: 3rem; height: 3rem;"></div>
+    </div>
+    <!-- Spinner End -->
+
+    <!-- Navbar Start -->
+    {% include 'main/partials/_navbar.html' %}
+    <!-- Navbar End -->
+
+
+    <!-- Page Header End -->
+
+<!-- Products Start -->
+
+<!-- <div class="container">
+    <div class="row">
+        Category Menu Start
+        <div class="col-lg-3">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title">{% trans 'Kategoriler' %}</h5>
+                </div>
+
+                <ul class="list-group list-group-flush">
+                    {% for category in navcategory %}
+                    <li class="list-group-item">
+                        {{ category.title }}
+                        <ul class="sub-categories">
+                            <br>
+                            {% for subcategory in subcategories %}
+                                {% if subcategory.parent == category %}
+                                    <li class="list-group-item sub-category" data-category="{{ subcategory.title }}">{{ subcategory.title }}</li>
+                                {% endif %}
+                            {% endfor %}
+                        </ul>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+-->
+
+
+
+            <!-- Category Menu End -->
+
+<section class="section">
+<div class="container-xxl py-5">
+    <div class="container">
+        <h1 class="display-5 mb-4">{{ category.title }}</h1>
+        <div class="row g-3" style="justify-content: center;">
+            {% for product in products %}
+                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="team-item">
+                        <div class="team-img position-relative overflow-hidden">
+                            <img class="img-fluid" src="{{ product.image.url }}" alt="{{ product.title }}">
+                            <div class="team-social">
+                                <a class="btn btn-square" href=""><i class="bi bi-info-circle-fill"></i></a>
+                            </div>
+                        </div>
+                        <div class="bg-primary text-center p-4">
+                            <p style="color: black; font-style: italic;">{{ product.category.title }}</p>
+                            <h5>{{ product.title }}</h5>
+                            <p style="color: black; font-style: italic;">{{ product.price }}$</p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+</section>
+<!-- Products End -->
+  
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+  $(document).ready(function() {
+    // Kategori değiştiğinde tetiklenecek olay
+    $('li[data-category]').click(function() {
+      var category = $(this).data('category');
+      // Tüm ürünleri gizle
+      $('.row.products').hide();
+      // Seçili kategoriye ait ürünleri göster
+      $('.row.products[data-category="' + category + '"]').show();
+
+      // Aktif alt kategoriyi güncelle
+      $('li[data-category^="kategori"]').removeClass('active');
+      $(this).addClass('active');
+    });
+
+    // Alt kategori değiştiğinde tetiklenecek olay
+    $('li[data-category^="kategori"]').click(function() {
+      var category = $(this).data('category');
+      // Tüm ürünleri gizle
+      $('.row.products').hide();
+      // Seçili alt kategoriye ait ürünleri göster
+      $('.row.products[data-category^="' + category + '"]').show();
+
+      // Aktif alt kategoriyi güncelle
+      $('li[data-category^="kategori"]').removeClass('active');
+      $(this).addClass('active');
+    });
+  });
+
+  $(document).ready(function() {
+    // Menü üzerine gelindiğinde tetiklenecek olay
+    $('li.menu').hover(
+      function() {
+        $(this).addClass('active');
+      },
+      function() {
+        $(this).removeClass('active');
+      }
+    );
+  });
+</script>
+
+
+    <!-- Footer Start -->
+    {% include 'main/partials/_footer.html' %}
+    <!-- Footer End -->
+
+
+</body>
+</html>

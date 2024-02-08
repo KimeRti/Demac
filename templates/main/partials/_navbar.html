@@ -1,0 +1,25 @@
+{% load static %}
+{% load i18n %}
+<nav class="navbar navbar-expand-lg bg-primary navbar-light sticky-top py-0 pe-5 justify-content-center">
+    <a href="{% url 'home' %}" class="navbar-brand ps-5 me-0">
+        <img src="{% static 'images/icons/logo.png' %}" alt="LOGO" style="width: 100%; height: 100%">
+    </a>
+    <button type="button" class="navbar-toggler me-0" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+        <div class="navbar-nav ms-auto p-4 p-lg-0">
+            <a href="{% url 'home' %}" class="nav-item nav-link{% if url == 'home' %} active{% endif %}">{% trans 'Ana Sayfa' %}</a>
+            <a href="{% url 'about' %}" class="nav-item nav-link {% if url == 'about' %} active{% endif %}">{% trans 'Hakkımızda' %}</a>
+        <div class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle {% if url == 'products' %} active{% endif %}" data-bs-toggle="dropdown">{% trans 'Makineler' %}</a>
+                    <div class="dropdown-menu bg-light m-0">
+                        {% for categories in navcategory %}
+                        <a href="{% url 'products' category_slug=categories.slug %}" class="dropdown-item">{{ categories.title }}</a>
+                        {% endfor %}
+                    </div>
+                </div>
+            <a href="{% url 'contact' %}" class="nav-item nav-link{% if url == 'contact' %} active{% endif %}">{% trans 'İletişim' %}</a>
+        </div>
+    </div>
+</nav>

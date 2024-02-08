@@ -1,103 +1,239 @@
 {% load static %}
-<!DOCTYPE html>
+{% load i18n %}
 <html lang="en">
+
 <head>
-	<title>Yapım Aşamasında</title>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-<!--===============================================================================================-->	
-	<link rel="icon" type="image/png" href="{% static 'images/icons/favicon.ico' %}"/>
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href=" {% static 'vendor/bootstrap/css/bootstrap.min.css' %}">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="{% static 'fonts/font-awesome-4.7.0/css/font-awesome.min.css' %}">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="{% static 'vendor/animate/animate.css' %}">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="{% static 'vendor/select2/select2.min.css' %}">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="{% static 'css/util.css' %}">
-	<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
-<!--===============================================================================================-->
+    <meta charset="utf-8">
+    <title>Demac</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+    <link rel="icon" href="{% static 'img/favicon.ico' %}" type="image/x-icon" />
+    {% include 'main/partials/_libaries.html'%}
 </head>
+
 <body>
-	
-	
-	<div class="bg-img1 size1 flex-w flex-c-m p-t-55 p-b-55 p-l-15 p-r-15">
-		<div class="wsize1 bor1 bg1 p-t-175 p-b-45 p-l-15 p-r-15 respon1">
-			<div class="wrappic1">
-				<img src="{% static 'images/icons/logo.png' %}" alt="LOGO" style="width: 50%; height: 50%">
-			</div>
+    {% include 'main/partials/_topbar.html' %}
+    <!-- Spinner Start -->
+    <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <div class="spinner-border text-primary" role="status" style="width: 3rem; height: 3rem;"></div>
+    </div>
+    <!-- Spinner End -->
 
-			<p class="txt-center m1-txt1 p-t-33 p-b-68">
-				Web Sitemiz Yapım Aşamasında
-			</p>
+    <!-- Navbar Start -->
+    {% include 'main/partials/_navbar.html'%}
+    <!-- Navbar End -->
 
-			<div class="wsize2 flex-w flex-c hsize1 cd100">
-				<div class="flex-col-c-m size2 how-countdown">
-					<span class="l1-txt1 p-b-9 days">35</span>
-					<span class="s1-txt1">Gün</span>
-				</div>
+    <!-- Carousel Start -->
 
-				<div class="flex-col-c-m size2 how-countdown">
-					<span class="l1-txt1 p-b-9 hours">17</span>
-					<span class="s1-txt1">Saat</span>
-				</div>
-
-				<div class="flex-col-c-m size2 how-countdown">
-					<span class="l1-txt1 p-b-9 minutes">50</span>
-					<span class="s1-txt1">Dakika</span>
-				</div>
-
-				<div class="flex-col-c-m size2 how-countdown">
-					<span class="l1-txt1 p-b-9 seconds">39</span>
-					<span class="s1-txt1">Saniye</span>
-				</div>
-			</div>
-
-		</div>
-	</div>
+    <div class="container px-5 mb-0">
+        <div id="header-carousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active" style="">
+                    <img class="w-100" src="{% static 'img/arkaplan.jpeg' %}" alt="Image">
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    <!-- Carousel End -->
 
 
+    <!-- About Start
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="row g-5">
+                <div class="col-lg-6">
+                    <div class="row gx-3 h-100">
+                        <div class="col-6 align-self-start wow fadeInUp" data-wow-delay="0.1s">
+                            <img class="img-fluid" src="{% static 'img/about-1.jpg' %}">
+                        </div>
+                        <div class="col-6 align-self-end wow fadeInDown" data-wow-delay="0.1s">
+                            <img class="img-fluid" src="{% static 'img/about-2.jpg' %}">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
+                    <p class="fw-medium text-uppercase text-primary mb-2">Hakkımızda</p>
+                    <h1 class="display-5 mb-4">Demac Markası: Yenilikçi ve Müşteri Memnuniyetine Verdiği Önemle Öne Çıkıyor.</h1>
+                    <p class="mb-4 text-primary">Yenilikçi ve müşteri memnuniyetini esas alan bir şirket politikasına sahip olan Demac Markası, yeni üretime başlayan düz örgü makineleri ile sektörde büyük bir fark yaratıyor. Kendisini sürekli olarak geliştiren ve yenilikçi çözümler sunan Demac, müşterilerinin ihtiyaçlarını anlamak ve onlara en iyi hizmeti sunmak adına sürekli olarak araştırma ve geliştirme faaliyetlerine ağırlık vermektedir.</p>
+                    <p class="mb-4 text-primary">Demac Markası, yenilikçilik ve teknolojik gelişmeleri yakından takip eden profesyonel bir ekibi bünyesinde barındırmaktadır. Bu sayede, sektördeki son trendleri belirleyen ve en güncel çözümleri sunan bir marka haline gelmiştir. Yaptığı araştırmalar ve müşteri geri bildirimleri doğrultusunda üretim süreçlerini sürekli olarak iyileştiren Demac, müşteri memnuniyetini en üst seviyede tutmaktadır.</p>
+                    <p class="mb-4 text-primary">Müşteri memnuniyetini esas alan bir şirket politikasına sahip olan Demac Markası, müşterilerinin ihtiyaçlarını karşılamak adına özelleştirilmiş çözümler sunmaktadır. Her müşteriye özel çözümler üretmek adına, müşteriyle yakın işbirliği içerisinde çalışan Demac, her adımda müşteri ihtiyaçlarını gözetmekte ve onlara en iyi hizmeti sunmaktadır.</p>
+                    <p class="mb-4 text-primary">Sadece ürünlerde değil, aynı zamanda satış sonrası hizmetlerde de müşteri memnuniyetini ön planda tutan Demac, yüksek kaliteli servis hizmetleriyle müşterilerinin yanında olmaktadır. Yetenekli ve deneyimli servis ekibiyle, her türlü teknik sorunu hızlı bir şekilde çözen Demac, müşterilerinin işlerini aksatmadan devam ettirmelerini sağlamaktadır.</p>
+                    <p class="mb-4 text-primary">Demac Markası, yenilikçi vizyonu ve müşteri memnuniyetine verdikleri önemle sektörde öncü bir konumda yer almaktadır. Sürekli olarak gelişme ve yenilik yapma misyonuyla hareket eden Demac, müşterilerine en iyi hizmeti sunmak adına çalışmalarını sürdürmektedir. Yenilikçi çözümleriyle sektöre yön veren Demac Markası, müşteri memnuniyetini her zaman en üst seviyede tutmayı hedeflemektedir.</p>
+                    <div class="d-flex align-items-center mb-4">
+                        <div class="flex-shrink-0 bg-primary p-4">
+                            <h1 class="display-2">30</h1>
+                            <h5 class="text-white">Yıllık</h5>
+                            <h5 class="text-white">Deneyim</h5>
+                        </div>
+                        <div class="ms-4">
+                            <p class="text-primary"><i class="fa fa-check text-primary me-2"></i>Power & Energy</p>
+                            <p class="text-primary"><i class="fa fa-check text-primary me-2"></i>Civil Engineering</p>
+                            <p class="text-primary"><i class="fa fa-check text-primary me-2"></i>Chemical Engineering</p>
+                            <p class="text-primary"><i class="fa fa-check text-primary me-2"></i>Mechanical Engineering</p>
+                            <p class="mb-0 text-primary"><i class="fa fa-check text-primary me-2"></i>Oil & Gas Engineering</p>
+                        </div>
+                    </div>
+                    <div class="row pt-2">
+                        <div class="col-sm-6">
+                            <div class="d-flex align-items-center">
+                                <div class="flex-shrink-0 btn-lg-square rounded-circle bg-primary">
+                                    <i class="fa fa-envelope-open text-white"></i>
+                                </div>
+                                <div class="ms-3">
+                                    <p class="mb-2 text-primary">Mail Gönderin</p>
+                                    <h5 class="mb-0" >info@demacimportexport.com</h5>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="d-flex align-items-center">
+                                <div class="flex-shrink-0 btn-lg-square rounded-circle bg-primary">
+                                    <i class="fa fa-phone-alt text-white"></i>
+                                </div>
+                                <div class="ms-3">
+                                    <p class="mb-2 text-primary">Bizi Arayın</p>
+                                    <h5 class="mb-0">+0212 345 6789</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+-->
 
-	
+    <!-- Service Start -->
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="text-center mx-auto pb-4 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
+                <h1 class="display-5 mb-4">Makine Türleri</h1>
+            </div>
+            <div class="row gy-5 gx-4">
+                <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="service-item">
+                        <img class="img-fluid" src="{% static 'img/makinefotoornek.jpg' %}" alt="">
+                        <div class="service-img">
+                            <img class="img-fluid" src="{% static 'img/fabric.png' %}" alt="">
+                        </div>
+                        <div class="service-detail">
+                            <div class="service-title">
+                                <hr class="w-25">
+                                <h3 class="mb-0">Düz Örgü Makinesi</h3>
+                                <hr class="w-25">
+                            </div>
+                        </div>
+                        <a class="btn btn-light" href="">Devamını Oku</a>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.3s">
+                    <div class="service-item">
+                        <img class="img-fluid" src="{% static 'img/makinefotoornek.jpg' %}" alt="">
+                        <div class="service-img">
+                            <img class="img-fluid" src="{% static 'img/shoes.png' %}" alt="">
+                        </div>
+                        <div class="service-detail">
+                            <div class="service-title">
+                                <hr class="w-25">
+                                <h3 class="mb-0">Ayakkabı Makinesi</h3>
+                                <hr class="w-25">
+                            </div>
+                        </div>
+                        <a class="btn btn-light" href="">Read More</a>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.5s">
+                    <div class="service-item">
+                        <img class="img-fluid" src="{% static 'img/makinefotoornek.jpg' %}" alt="">
+                        <div class="service-img">
+                            <img class="img-fluid" src="{% static 'img/collar.png' %}" alt="">
+                        </div>
+                        <div class="service-detail">
+                            <div class="service-title">
+                                <hr class="w-25">
+                                <h3 class="mb-0">Yaka Makinesi</h3>
+                                <hr class="w-25">
+                            </div>
+                        </div>
+                        <a class="btn" href="">Read More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Service End -->
 
-<!--===============================================================================================-->	
-	<script src="{% static 'vendor/jquery/jquery-3.2.1.min.js' %}"></script>
-<!--===============================================================================================-->
-	<script src="{% static 'vendor/bootstrap/js/popper.js' %}"></script>
-	<script src="{% static 'vendor/bootstrap/js/bootstrap.min.js' %}"></script>
-<!--===============================================================================================-->
-	<script src="{% static 'vendor/select2/select2.min.js' %}"></script>
-<!--===============================================================================================-->
-	<script src="{% static 'vendor/countdowntime/moment.min.js' %}"></script>
-	<script src="{% static 'vendor/countdowntime/moment-timezone.min.js' %}"></script>
-	<script src="{% static 'vendor/countdowntime/moment-timezone-with-data.min.js' %}"></script>
-	<script src="{% static 'vendor/countdowntime/countdowntime.js' %}"></script>
-	<script>
-		$('.cd100').countdown100({
-			/*Set Endtime here*/
-			/*Endtime must be > current time*/
-			endtimeYear: 0,
-			endtimeMonth: 0,
-			endtimeDate: 35,
-			endtimeHours: 18,
-			endtimeMinutes: 0,
-			endtimeSeconds: 0,
-			timeZone: "" 
-			// ex:  timeZone: "America/New_York"
-			//go to " http://momentjs.com/timezone/ " to get timezone
-		});
-	</script>
-<!--===============================================================================================-->
-	<script src="{% static 'vendor/tilt/tilt.jquery.min.js' %}"></script>
-	<script >
-		$('.js-tilt').tilt({
-			scale: 1.1
-		})
-	</script>
-<!--===============================================================================================-->
-	<script src="{% static 'js/main.js' %}"></script>
+-->
+    <br><br>
+    <div class="wow fadeInUp" style="justify-content: center; align-items: center; text-align: center; margin-top: 30px;" data-wow-delay="0.5s"><h1 class="heading" style="color: #004e90;;">{% trans 'Ürünlerimiz' %}</h1></div><br><br>
+    <br><br>
+
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="row g-3" style="justify-content: center;">
+                {% for products in product  %}
+                    <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                        <div class="team-item">
+                            <div class="team-img position-relative overflow-hidden">
+                                <img class="img-fluid" src="{{ products.photo.url }}" alt="">
+                                <div class="team-social">
+                                    <a class="btn btn-square" href=""><i class="bi bi-info-circle-fill"></i></a>
+                                </div>
+                            </div>
+                            <div class="bg-secondary text-center p-4">
+                                <p style="color:black; font-style: italic;">{{ products.category.all|join:',' }}</p>
+                                <h5 >{{ products.product_name }}</h5>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Facts Start -->
+    <div class="container-fluid facts my-5 p-5">
+        <div class="row g-5">
+            <div class="col-md-6 col-xl-3 wow fadeIn" data-wow-delay="0.1s">
+                <div class="text-center border p-5">
+                    <i class="fa fa-certificate fa-3x text-white mb-3"></i>
+                    <h1 class="display-2 text-primary mb-0" data-toggle="counter-up">30</h1>
+                    <span class="fs-5 fw-semi-bold text-white">{% trans 'Yıllık Deneyim' %}</span>
+                </div>
+            </div>
+            <div class="col-md-6 col-xl-3 wow fadeIn" data-wow-delay="0.3s">
+                <div class="text-center border p-5">
+                    <i class="fa fa-users-cog fa-3x text-white mb-3"></i>
+                    <h1 class="display-2 text-primary mb-0" data-toggle="counter-up">135</h1>
+                    <span class="fs-5 fw-semi-bold text-white">{% trans 'Takım Arkadaşı' %}</span>
+                </div>
+            </div>
+            <div class="col-md-6 col-xl-3 wow fadeIn" data-wow-delay="0.5s">
+                <div class="text-center border p-5">
+                    <i class="fa fa-users fa-3x text-white mb-3"></i>
+                    <h1 class="display-2 text-primary mb-0" data-toggle="counter-up">957</h1>
+                    <span class="fs-5 fw-semi-bold text-white">{% trans 'Mutlu Müşteri' %}</span>
+                </div>
+            </div>
+            <div class="col-md-6 col-xl-3 wow fadeIn" data-wow-delay="0.7s">
+                <div class="text-center border p-5">
+                    <i class="fa fa-check-double fa-3x text-white mb-3"></i>
+                    <h1 class="display-2 text-primary mb-0" data-toggle="counter-up">1839</h1>
+                    <span class="fs-5 fw-semi-bold text-white">{% trans 'Bitirilmiş Proje' %}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Facts End -->
+
+    <!-- Footer Start -->
+    {% include 'main/partials/_footer.html' %}
+    <!-- Footer End -->
+    
 
 </body>
+
 </html>

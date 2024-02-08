@@ -14,17 +14,27 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+import views as views
 from django.contrib import admin
 from django.urls import path,include
 from django.conf.urls.static import static
 from django.conf import settings
 from . import views
+from django.conf.urls.i18n import i18n_patterns
+from django.utils.translation import gettext_lazy as _
 
 handler404 = views.custom_404_view
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('main.urls')),
 ]
 
+urlpatterns = [
+    *i18n_patterns(*urlpatterns, prefix_default_language=False),
+    path("set_language/<str:language>", views.set_language, name="set_language"),
+    ]
+
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -38,7 +38,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'main',
     'Demac',
-    'demac',
 ]
 
 MIDDLEWARE = [

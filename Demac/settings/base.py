@@ -30,7 +30,6 @@ SECRET_KEY = 'django-insecure-a-ptxsao-6wy0x8nagpx7isr1guw@vl(w!w*z70i=5n4dd-tur
 # Application definition
 
 INSTALLED_APPS = [
-    'modeltranslation',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

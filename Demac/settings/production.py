@@ -13,9 +13,9 @@ DATABASES = {
 
         'NAME': 'Demac',
 
-        'USER': 'detexuser',
+        'USER': 'postgres',
 
-        'PASSWORD': 'detex123',
+        'PASSWORD': '123',
 
         'HOST': 'localhost',
 

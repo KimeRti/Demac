@@ -2,7 +2,7 @@ from .base import *
 
 DEBUG = True
 
-ALLOWED_HOSTS = ['45.147.46.199', 'demacimportexport.com', 'www.demacimportexport.com']
+ALLOWED_HOSTS = ['demacimportexport.com', 'www.demacimportexport.com']
 STATIC_ROOT = 'Demac/static/'
 
 CSRF_TRUSTED_ORIGINS = ['http://www.demacimportexport.com', 'http://demacimportexport.com', 'https://www.demacimportexport.com', 'https://demacimportexport.com']
@@ -18,9 +18,9 @@ DATABASES = {
 
         'NAME': 'demac',
 
-        'USER': 'detexuser',
+        'USER': 'kimerti',
 
-        'PASSWORD': 'detex123',
+        'PASSWORD': 'kimerti123',
 
         'HOST': 'localhost',
 

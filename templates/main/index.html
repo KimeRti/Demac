@@ -10,6 +10,35 @@
     <meta content="" name="description">
     <link rel="icon" href="{% static 'img/favicon.ico' %}" type="image/x-icon" />
     {% include 'main/partials/_libaries.html'%}
+    <style>
+        /* Reklam Stilleri */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7); /* Arka plan rengi ve opaklık */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999; /* En üstte göster */
+        }
+
+        .ad {
+            max-width: 80%; /* Reklamın genişliği */
+            max-height: 80%; /* Reklamın yüksekliği */
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+        }
+    </style>
 </head>
 
 <body>
@@ -25,6 +54,20 @@
     <!-- Navbar End -->
 
     <!-- Carousel Start -->
+
+    <div class="overlay">
+        <!-- Kapatma Butonu -->
+        <span class="close-btn" onclick="closeAd()">&times;</span>
+        <!-- Reklam Resmi -->
+        <img class="ad" src="{% static 'img/reklam.png' %}">
+    </div>
+
+<script>
+    // Reklamı kapatma fonksiyonu
+    function closeAd() {
+        document.querySelector('.overlay').style.display = 'none';
+    }
+</script>
 
     <div class="container px-5 mb-0">
         <div id="header-carousel" class="carousel slide" data-bs-ride="carousel">
